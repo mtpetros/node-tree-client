@@ -4,7 +4,8 @@ const hosts = {
     server: 'http://0.0.0.0:8080'
   },
   production: {
-    client: 'https://node-tree-client.herokuapp.com'
+    client: 'https://node-tree-client.herokuapp.com',
+    server: 'https://node-tree-server.herokuapp.com'
   }
 }
 
