@@ -9,7 +9,8 @@ const hosts = {
 }
 
 const env = {
-  [hosts.development.client]: 'development'
+  [hosts.development.client]: 'development',
+  [hosts.production.client]: 'production'
 }[window.location.origin]
 
 const host = hosts[env]
