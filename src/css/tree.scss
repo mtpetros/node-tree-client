@@ -1,0 +1,101 @@
+.tree {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.node {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #CFE1EF;
+  border: 1px solid #000;
+  border-radius: 3px;
+  padding: 2.5px 5px;
+  font-size: 18px;
+  
+  &.node-root {
+    width: 200px;
+    height: 150px;
+    font-size: 22px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &.parent:hover {
+    cursor: pointer;
+  }
+
+  &.active {
+    font-weight: bold;
+  }
+}
+
+.branches {
+  position: relative;
+
+  .list {
+    padding-left: 22px;
+    position: relative;
+    
+    .item {
+      padding-top: 12px;
+      position: relative;
+
+      > .item {
+        padding-top: 6px;
+        padding-bottom: 15px;
+        padding-left: 36px;
+        width: 50%;
+
+        &:before, &:after {
+          left: 18px;
+        }
+        &:before {
+          top: 15px;
+          width: 15px;
+        }
+        &:after {
+          top: 7px;
+        }
+      }
+
+      &:before, &:after {
+        content: "";
+        position: absolute;
+        left: -12px;
+      }
+      &:before {
+        border-top: 1px solid #000;
+        top: 16px;
+        width: 8px;
+        height: 0;
+      }
+      &:after {
+        border-left: 1px solid #000;
+        height: 100%;
+        width: 0;
+        top: 8px;
+      }
+    }
+    .item:last-child {
+      &:after {
+        height: 8px;
+      }
+    } 
+  }
+
+  .factory {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .range {
+    margin-left: 15px;
+  }
+}
