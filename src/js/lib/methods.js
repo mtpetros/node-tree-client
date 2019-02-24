@@ -32,14 +32,15 @@ async function request (method, url, body = {}) {
   const opts = getOpts(baseOpts, method, body)
 
   const res = await fetch(url, opts)
+
+  if (method === 'DELETE') {
+    return { ok: res.ok, status: res.status }
+  }
+
   const json = await res.json()
 
   if (!res.ok && json.error) {
     throw new Error(json.error)
-  }
-
-  if (method === 'DELETE') {
-    return { ok: res.ok, status: res.status }
   }
 
   return { ok: res.ok, status: res.status, json }
