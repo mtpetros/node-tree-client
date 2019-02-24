@@ -2,7 +2,7 @@
 
 const mode = 'cors'
 const redirect = 'error'
-const credentials = 'include'
+const credentials = 'omit'
 const headers = { 'Content-Type': 'application/json' }
 
 const methodsWithBody = ['POST', 'PATCH', 'PUT']
@@ -32,12 +32,16 @@ async function request (method, url, body = {}) {
   const opts = getOpts(baseOpts, method, body)
 
   const res = await fetch(url, opts)
+  const json = await res.json()
+
+  if (!res.ok && json.error) {
+    throw new Error(json.error)
+  }
 
   if (method === 'DELETE') {
     return { ok: res.ok, status: res.status }
   }
 
-  const json = await res.json()
   return { ok: res.ok, status: res.status, json }
 }
 
