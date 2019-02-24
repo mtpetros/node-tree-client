@@ -14,9 +14,6 @@ const env = {
   [hosts.production.client]: 'production'
 }[window.location.origin]
 
-console.log('origin', window.location.origin)
-console.log('env', env)
 const host = hosts[env]
-console.log('host', host)
 
 export default host

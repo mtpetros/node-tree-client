@@ -9,8 +9,6 @@ const {
 } = methods
 
 const urlBase = `${host.server}/api`
-console.log('host', host)
-console.log('urlBase', urlBase)
 
 export const factories = {
   create: (data) => {
