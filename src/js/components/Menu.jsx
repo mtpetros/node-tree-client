@@ -7,6 +7,12 @@ import Input from 'Components/common/Input'
 import Button from 'Components/common/Button'
 import ConditionalRender from 'Components/common/ConditionalRender'
 
+import {
+  alphanumericFormatter,
+  numberFormatter,
+  rangeFormatter
+} from 'Lib/formatters'
+
 class FactoryMenu extends Component {
   constructor (props) {
     super(props)
@@ -139,13 +145,7 @@ class FactoryMenu extends Component {
           name='name'
           value={name}
           setKey={setKey}
-        />
-        <Input
-          label='range bottom'
-          type='text'
-          name='bottom'
-          value={bottom}
-          setKey={setKey}
+          formatter={alphanumericFormatter}
         />
         <Input
           label='range top'
@@ -153,6 +153,15 @@ class FactoryMenu extends Component {
           name='top'
           value={top}
           setKey={setKey}
+          formatter={numberFormatter}
+        />
+        <Input
+          label='range bottom'
+          type='text'
+          name='bottom'
+          value={bottom}
+          setKey={setKey}
+          formatter={numberFormatter}
         />
         <ConditionalRender
           condition={isFactory}
@@ -163,6 +172,7 @@ class FactoryMenu extends Component {
             name='amount'
             value={amount}
             setKey={setKey}
+            formatter={rangeFormatter([0, 16])}
           />
         </ConditionalRender>
         <div className='button-group'>

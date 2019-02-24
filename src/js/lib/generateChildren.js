@@ -26,8 +26,6 @@ const generateChildren = (opts) => {
 
   const newChildren = emptyChildren.map(mapChildren)
 
-  console.log('newChildren', newChildren)
-
   return newChildren
 }
 

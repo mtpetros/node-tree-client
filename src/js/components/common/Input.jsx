@@ -6,7 +6,8 @@ const Input = (props) => {
     type,
     name,
     value,
-    setKey
+    setKey,
+    formatter
   } = props
 
   const handleChange = (e) => {
@@ -14,6 +15,11 @@ const Input = (props) => {
       name,
       value
     } = e.target
+
+    if (formatter) {
+      setKey(name, formatter(value))
+      return e.preventDefault()
+    }
 
     setKey(name, value)
     e.preventDefault()
